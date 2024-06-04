@@ -46,7 +46,7 @@ class User(Base):
         Args:
             pwd (str): The new password.
         """
-        if pwd is None or type(pwd) is not str:
+        if pwd is None or not isinstance(pwd, str):
             self._password = None
         else:
             self._password = hashlib.sha256(pwd.encode()).hexdigest().lower()
@@ -61,7 +61,7 @@ class User(Base):
         Returns:
             bool: True if the password is valid, False otherwise.
         """
-        if pwd is None or type(pwd) is not str:
+        if pwd is None or not isinstance(pwd, str):
             return False
         if self.password is None:
             return False
