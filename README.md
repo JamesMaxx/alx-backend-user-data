@@ -1,6 +1,7 @@
 # README
 
 ## Table of Contents
+
 1. [Introduction](#introduction)
 2. [What Is PII, Non-PII, and Personal Data?](#what-is-pii-non-pii-and-personal-data)
 3. [Logging Documentation](#logging-documentation)
@@ -17,7 +18,9 @@ This README provides detailed information on Personally Identifiable Information
 ## What Is PII, Non-PII, and Personal Data?
 
 ### PII (Personally Identifiable Information)
+
 PII refers to information that can be used to identify an individual. Examples include:
+
 - Full name
 - Social Security number
 - Email address
@@ -25,14 +28,18 @@ PII refers to information that can be used to identify an individual. Examples i
 - Home address
 
 ### Non-PII (Non-Personally Identifiable Information)
+
 Non-PII refers to data that cannot be used on its own to identify an individual. Examples include:
+
 - Aggregated data
 - Anonymized data
 - Device types
 - Browser types
 
 ### Personal Data
+
 Personal data is any information that relates to an identified or identifiable individual. It encompasses both PII and non-PII. Examples include:
+
 - IP addresses
 - Cookies
 - Behavioral data
@@ -40,9 +47,11 @@ Personal data is any information that relates to an identified or identifiable i
 ## Logging Documentation
 
 ### Logging to Files
+
 Logging to files involves writing log messages to a file on the disk. This is useful for keeping a record of events and diagnosing issues.
 
-#### Example (Python):
+#### Example (Python)
+
 ```python
 import logging
 
