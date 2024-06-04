@@ -1,28 +1,15 @@
 #!/usr/bin/env python3
-"""
-Module of Authentication
+""" Module of Authentication
 """
 from flask import request
 from typing import List, TypeVar
 
 
 class Auth:
-    """
-    Class to manage the API authentication
-    """
+    """ Class to manage the API authentication """
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """
-        Method for validating if endpoint requires auth
-
-        Args:
-            path (str): The path of the endpoint.
-            excluded_paths (List[str]): The paths that are excluded from
-                authorization.
-
-        Returns:
-            bool: True if the endpoint requires auth, False otherwise.
-        """
+        """ Method for validating if endpoint requires auth """
         if path is None or excluded_paths is None or excluded_paths == []:
             return True
 
@@ -51,28 +38,12 @@ class Auth:
         return True
 
     def authorization_header(self, request=None) -> str:
-        """
-        Method that handles authorization header
-
-        Args:
-            request (flask.Request): The request object.
-
-        Returns:
-            str: The authorization header value.
-        """
+        """ Method that handles authorization header """
         if request is None:
             return None
 
         return request.headers.get("Authorization", None)
 
     def current_user(self, request=None) -> TypeVar('User'):
-        """
-        Validates current user
-
-        Args:
-            request (flask.Request): The request object.
-
-        Returns:
-            TypeVar('User'): The current user if valid, None otherwise.
-        """
+        """ Validates current user """
         return None

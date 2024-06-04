@@ -1,13 +1,6 @@
 #!/usr/bin/env python3
 """ Base module
-
-Classes:
-    Base: Base class
-
-Functions:
-    search: Search all objects with matching attributes
 """
-
 from datetime import datetime
 from typing import TypeVar, List, Iterable
 from os import path
@@ -21,24 +14,6 @@ DATA = {}
 
 class Base():
     """ Base class
-
-    Attributes:
-        id (str): Object ID
-        created_at (datetime): Date of creation
-        updated_at (datetime): Date of last update
-
-    Methods:
-        __init__: Initialize a Base instance
-        __eq__: Equality
-        to_json: Convert the object a JSON dictionary
-        load_from_file: Load all objects from file
-        save_to_file: Save all objects to file
-        save: Save current object
-        remove: Remove object
-        count: Count all objects
-        all: Return all objects
-        get: Return one object by ID
-        search: Search all objects with matching attributes
     """
 
     def __init__(self, *args: list, **kwargs: dict):
@@ -63,7 +38,7 @@ class Base():
     def __eq__(self, other: TypeVar('Base')) -> bool:
         """ Equality
         """
-        if not isinstance(self, type(other)):
+        if type(self) != type(other):
             return False
         if not isinstance(self, Base):
             return False
@@ -76,7 +51,7 @@ class Base():
         for key, value in self.__dict__.items():
             if not for_serialization and key[0] == '_':
                 continue
-            if isinstance(value, datetime):
+            if type(value) is datetime:
                 result[key] = value.strftime(TIMESTAMP_FORMAT)
             else:
                 result[key] = value
@@ -149,15 +124,8 @@ class Base():
     @classmethod
     def search(cls, attributes: dict = {}) -> List[TypeVar('Base')]:
         """ Search all objects with matching attributes
-
-        Args:
-            attributes (dict): Dictionary of attributes and values
-
-        Returns:
-            List[TypeVar('Base')]: List of objects with matching attributes
         """
         s_class = cls.__name__
-
         def _search(obj):
             if len(attributes) == 0:
                 return True
@@ -165,5 +133,5 @@ class Base():
                 if (getattr(obj, k) != v):
                     return False
             return True
-
+        
         return list(filter(_search, DATA[s_class].values()))
