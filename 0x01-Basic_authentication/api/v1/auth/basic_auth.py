@@ -39,7 +39,8 @@ class BasicAuth(Auth):
                  the header is invalid.
 
         """
-        if authorization_header is None or not isinstance(authorization_header, str):
+        if authorization_header is None or not isinstance(
+                authorization_header, str):
             return None
 
         if not authorization_header.startswith("Basic "):
@@ -65,7 +66,8 @@ class BasicAuth(Auth):
             str: The decoded authorization header, or None if the decoding fails.
 
         """
-        if base64_authorization_header is None or not isinstance(base64_authorization_header, str):
+        if base64_authorization_header is None or not isinstance(
+                base64_authorization_header, str):
             return None
 
         try:
@@ -95,7 +97,8 @@ class BasicAuth(Auth):
                    the header is invalid.
 
         """
-        if decoded_base64_authorization_header is None or not isinstance(decoded_base64_authorization_header, str):
+        if decoded_base64_authorization_header is None or not isinstance(
+                decoded_base64_authorization_header, str):
             return None, None
 
         if ':' not in decoded_base64_authorization_header:
@@ -176,4 +179,3 @@ class BasicAuth(Auth):
         user = self.user_object_from_credentials(email, pwd)
 
         return user
-
