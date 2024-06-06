@@ -18,45 +18,64 @@ AUTH_TYPE = getenv("AUTH_TYPE")
 
 if AUTH_TYPE == "auth":
     from api.v1.auth.auth import Auth
+    """
+    Auth class documentation
+    """
     auth = Auth()
 elif AUTH_TYPE == "basic_auth":
     from api.v1.auth.basic_auth import BasicAuth
+    """
+    BasicAuth class documentation
+    """
     auth = BasicAuth()
 elif AUTH_TYPE == "session_auth":
     from api.v1.auth.session_auth import SessionAuth
+    """
+    SessionAuth class documentation
+    """
     auth = SessionAuth()
 elif AUTH_TYPE == "session_exp_auth":
     from api.v1.auth.session_exp_auth import SessionExpAuth
+    """
+    SessionExpAuth class documentation
+    """
     auth = SessionExpAuth()
 elif AUTH_TYPE == "session_db_auth":
     from api.v1.auth.session_db_auth import SessionDBAuth
+    """
+    SessionDBAuth class documentation
+    """
     auth = SessionDBAuth()
 
 
-@ app.errorhandler(404)
+@app.errorhandler(404)
 def not_found(error) -> str:
-    """ Not found handler
+    """
+    Not found handler documentation
     """
     return jsonify({"error": "Not found"}), 404
 
 
-@ app.errorhandler(401)
+@app.errorhandler(401)
 def unauthorized_error(error) -> str:
-    """ Unauthorized handler
+    """
+    Unauthorized handler documentation
     """
     return jsonify({"error": "Unauthorized"}), 401
 
 
-@ app.errorhandler(403)
+@app.errorhandler(403)
 def forbidden_error(error) -> str:
-    """ Forbidden handler
+    """
+    Forbidden handler documentation
     """
     return jsonify({"error": "Forbidden"}), 403
 
 
-@ app.before_request
+@app.before_request
 def before_request() -> str:
-    """ Before Request Handler
+    """
+    Before Request Handler documentation
     Requests Validation
     """
     if auth is None:
