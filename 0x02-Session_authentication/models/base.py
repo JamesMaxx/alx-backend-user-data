@@ -38,7 +38,7 @@ class Base():
     def __eq__(self, other: TypeVar('Base')) -> bool:
         """ Equality
         """
-        if not isinstance(self, type(other)):
+        if type(self) != type(other):
             return False
         if not isinstance(self, Base):
             return False
@@ -51,7 +51,7 @@ class Base():
         for key, value in self.__dict__.items():
             if not for_serialization and key[0] == '_':
                 continue
-            if isinstance(value, datetime):
+            if type(value) is datetime:
                 result[key] = value.strftime(TIMESTAMP_FORMAT)
             else:
                 result[key] = value

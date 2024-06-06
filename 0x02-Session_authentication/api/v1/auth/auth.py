@@ -10,13 +10,7 @@ class Auth:
     """ Class to manage the API authentication """
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """ Method for validating if endpoint requires auth
-        Args:
-            path (str): Path to validate
-            excluded_paths (List[str]): List of excluded paths
-        Returns:
-            bool: True if path requires authentication, False otherwise
-        """
+        """ Method for validating if endpoint requires auth """
         if path is None or excluded_paths is None or excluded_paths == []:
             return True
 
@@ -45,33 +39,18 @@ class Auth:
         return True
 
     def authorization_header(self, request=None) -> str:
-        """ Method that handles authorization header
-        Args:
-            request (flask.Request): Request object
-        Returns:
-            str: Authorization header value or None
-        """
+        """ Method that handles authorization header """
         if request is None:
             return None
 
         return request.headers.get("Authorization", None)
 
     def current_user(self, request=None) -> TypeVar('User'):
-        """ Validates current user
-        Args:
-            request (flask.Request): Request object
-        Returns:
-            TypeVar('User'): Current user instance or None
-        """
+        """ Validates current user """
         return None
 
     def session_cookie(self, request=None):
-        """Returns a cookie value from a request
-        Args:
-            request (flask.Request): Request object
-        Returns:
-            str: Session cookie value or None
-        """
+        """Returns a cookie value from a request"""
 
         if request is None:
             return None
